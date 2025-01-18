@@ -1,0 +1,19 @@
+name: Unzip and Run Project
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Unzip project
+      run: unzip yourproject.zip -d project
+
+    - name: Run project
+      working-directory: project
+      run: |
+        python3 -m http.server 8000
